@@ -1,6 +1,5 @@
 {
   "extends": [
-    "./tslint-shared-rules.json"
   ],
   "linterOptions": {
     "exclude": [

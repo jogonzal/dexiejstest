@@ -8,6 +8,13 @@ export class AppDatabase extends Dexie {
       contacts: '++id, first, last',
       // other tables goes here...
     })
+
+    this.version(2).stores({
+      contacts: "++id,first,last,birthdate"
+    }).upgrade (_trans => {
+        throw new Error('Error!')
+    })
+
     // The following line is needed if your typescript
     // is compiled using babel instead of tsc:
     this.contacts = this.table('contacts')
@@ -15,7 +22,8 @@ export class AppDatabase extends Dexie {
 }
 
 export interface IContact {
-  id?: number,
-  first: string,
+  id?: number
+  first: string
   last: string
+  birthdate: Date
 }

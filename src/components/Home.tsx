@@ -1,4 +1,4 @@
-import { PrimaryButton, Stack, StackItem, Text, TextField } from 'office-ui-fabric-react'
+import { PrimaryButton, Stack, StackItem, Text, TextField, DatePicker } from 'office-ui-fabric-react'
 import * as React from 'react'
 import { AppDatabase, IContact } from './db'
 
@@ -6,6 +6,7 @@ type State = {
   contacts: IContact[]
   first: string
   last: string
+  birthdate: Date
 }
 
 type Props = {
@@ -18,6 +19,7 @@ export class Home extends React.Component<Props, State> {
       contacts: [],
       first: '',
       last: '',
+      birthdate: new Date(),
     }
   }
 
@@ -34,6 +36,7 @@ export class Home extends React.Component<Props, State> {
     const newContact = {
       first: this.state.first,
       last: this.state.last,
+      birthdate: new Date()
     }
     db.contacts.add(newContact)
 
@@ -51,6 +54,7 @@ export class Home extends React.Component<Props, State> {
             <PrimaryButton onClick={ this.addToDatabase }>Click to add to indexdb</PrimaryButton>
             <TextField label='First' value={ this.state.first } onChange={ (_ev, val) => this.setState({ first: val ?? '' }) } />
             <TextField label='Last' value={ this.state.last } onChange={ (_ev, val) => this.setState({ last: val ?? '' }) } />
+            <DatePicker label='Birthdate' value={ this.state.birthdate } onSelectDate={ (val) => this.setState({ birthdate: val ?? new Date() }) } />
             <pre>
               { JSON.stringify(this.state.contacts, undefined, '\t') }
             </pre>

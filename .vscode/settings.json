@@ -1,0 +1,19 @@
+{
+	// Insert spaces when pressing Tab!
+	"editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
+  
+	// When opening a file, `editor.tabSize` and `editor.insertSpaces`
+	// will be detected based on the file contents. Set to false to keep
+	// the values you've explicitly set, above.
+  "editor.detectIndentation": false,
+  // We use CRLF for our line endings (enforced by LINT)
+  "files.eol":"\r\n",
+  // Import files always as relative URLs
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  // Prefer single quotes (e.g. for imports)
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single"
+  }

@@ -11,8 +11,11 @@ export class AppDatabase extends Dexie {
 
     this.version(2).stores({
       contacts: "++id,first,last,birthdate"
-    }).upgrade (_trans => {
-        throw new Error('Error!')
+    }).upgrade(trans => {
+      const db = trans.db as AppDatabase
+      return db.contacts.toCollection().modify(contact => {
+        contact.birthdate = new Date()
+      })
     })
 
     // The following line is needed if your typescript

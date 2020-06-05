@@ -36,7 +36,7 @@ export class Home extends React.Component<Props, State> {
     const newContact = {
       first: this.state.first,
       last: this.state.last,
-      birthdate: new Date()
+      birthdate: this.state.birthdate,
     }
     db.contacts.add(newContact)
 
